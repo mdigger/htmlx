@@ -78,7 +78,7 @@ func (n Node) Parent() Node {
 	if n.IsEmpty() {
 		return n
 	}
-	return Node{n.Node.Parent}
+	return New(n.Node.Parent)
 }
 
 // FirstChild returns the first child element.
@@ -86,15 +86,31 @@ func (n Node) FirstChild() Node {
 	if n.IsEmpty() {
 		return n
 	}
-	return Node{n.Node.FirstChild}
+	return New(n.Node.FirstChild)
 }
 
-// NextSibling returns the element following data.
+// LastChild returns the last child element.
+func (n Node) LastChild() Node {
+	if n.IsEmpty() {
+		return n
+	}
+	return New(n.Node.LastChild)
+}
+
+// PrevSibling returns the previous sibling element.
+func (n Node) PrevSibling() Node {
+	if n.IsEmpty() {
+		return n
+	}
+	return New(n.Node.PrevSibling)
+}
+
+// NextSibling returns the previous sibling element.
 func (n Node) NextSibling() Node {
 	if n.IsEmpty() {
 		return n
 	}
-	return Node{n.Node.NextSibling}
+	return New(n.Node.NextSibling)
 }
 
 // Find returns the first element that is suitable for the specified conditions.
@@ -122,6 +138,13 @@ func (n Node) FindAll(m Matcher) []Node {
 // the current element.
 func (n Node) FindSibling(m Matcher) Node {
 	return New(FindSibling(n.Node, m))
+}
+
+// FindPrevSibling finds the previous siblin element that follows the
+// specified one. When searching does not use recursion and is not compared with
+// the current element.
+func (n Node) FindPrevSibling(m Matcher) Node {
+	return New(FindPrevSibling(n.Node, m))
 }
 
 // HTML returns a string with HTML representation.

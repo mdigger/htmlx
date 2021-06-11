@@ -67,3 +67,20 @@ func FindSibling(n *html.Node, m Matcher) *html.Node {
 
 	return nil
 }
+
+// FindPrevSibling finds the previous siblin element that follows the
+// specified one. When searching does not use recursion and is not compared with
+// the current element.
+func FindPrevSibling(n *html.Node, m Matcher) *html.Node {
+	if n == nil || m == nil {
+		return nil
+	}
+
+	for c := n.PrevSibling; c != nil; c = c.PrevSibling {
+		if m(c) {
+			return c
+		}
+	}
+
+	return nil
+}
