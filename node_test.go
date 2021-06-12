@@ -2,6 +2,32 @@ package htmlx
 
 import "testing"
 
+func TestNode(t *testing.T) {
+	doc, err := String(`<ul id="test">
+	<li><a href="test1.html">test1</a></li>
+	<!-- comment -->
+	<li><a href="test2.html">test2</a></li>
+	<li><a href="test3.html">test3</a></li>
+</ul>`)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	ul := doc.Find(ID("test"))
+	if ul.IsEmpty() || ul.ID() != "test" {
+		t.Errorf("must specify an element with the 'test' identifier")
+	}
+
+	tagLIFinder := TagName("li")
+	for li := ul.Find(tagLIFinder); !li.IsEmpty(); li = li.FindNext(tagLIFinder) {
+		if li.FirstChild().Data != "a" {
+			t.Errorf("must specify the a element inside li")
+		}
+		// println(li.String())
+	}
+
+}
+
 func TestEmpty(t *testing.T) {
 	var empty Node
 
