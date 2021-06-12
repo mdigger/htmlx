@@ -26,8 +26,8 @@ func Parse(r io.Reader) (n Node, err error) {
 	return New(doc), err
 }
 
-// Open loads and parses an HTML document from the file.
-func Open(path string) (Node, error) {
+// Load loads and parses an HTML document from the file.
+func Load(path string) (Node, error) {
 	f, err := os.Open(path)
 	if err != nil {
 		return New(nil), err
