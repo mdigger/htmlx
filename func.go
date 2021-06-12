@@ -39,8 +39,8 @@ func RemoveChilds(n *html.Node) {
 	}
 }
 
-// HTML returns a string with HTML representation.
-func HTML(n *html.Node) (string, error) {
+// ToHTML returns a string with ToHTML representation.
+func ToHTML(n *html.Node) (string, error) {
 	if n == nil {
 		return "", nil
 	}

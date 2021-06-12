@@ -4,6 +4,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/mdigger/wstat"
 	"golang.org/x/net/html"
@@ -24,6 +25,11 @@ func New(node *html.Node) Node {
 func Parse(r io.Reader) (n Node, err error) {
 	doc, err := html.Parse(r)
 	return New(doc), err
+}
+
+// From returns a parsed HTML tree representation from the string.
+func From(data string) (Node, error) {
+	return Parse(strings.NewReader(data))
 }
 
 // Load loads and parses an HTML document from the file.
@@ -145,7 +151,7 @@ func (n Node) FindPrev(m Matcher) Node {
 
 // HTML returns a string with HTML representation.
 func (n Node) HTML() (string, error) {
-	return HTML(n.Node)
+	return ToHTML(n.Node)
 }
 
 // String returns a string with HTML representation.
