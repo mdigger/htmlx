@@ -8,8 +8,14 @@ func TestEmpty(t *testing.T) {
 	if !empty.IsEmpty() {
 		t.Errorf("expected node to be empty")
 	}
+	if empty.Parent() != empty {
+		t.Errorf("expected empty.Parent to return also empty node")
+	}
 	if empty.FirstChild() != empty {
 		t.Errorf("expected empty.FirstChild to return also empty node")
+	}
+	if empty.PrevSibling() != empty {
+		t.Errorf("expected empty.PrevSibling to return also empty node")
 	}
 	if empty.NextSibling() != empty {
 		t.Errorf("expected empty.NextSibling to return also empty node")

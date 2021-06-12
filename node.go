@@ -151,7 +151,7 @@ func (n Node) FindPrev(m Matcher) Node {
 
 // HTML returns a string with HTML representation.
 func (n Node) HTML() (string, error) {
-	return ToHTML(n.Node)
+	return HTML(n.Node)
 }
 
 // String returns a string with HTML representation.
