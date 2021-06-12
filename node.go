@@ -27,8 +27,8 @@ func Parse(r io.Reader) (n Node, err error) {
 	return New(doc), err
 }
 
-// From returns a parsed HTML tree representation from the string.
-func From(data string) (Node, error) {
+// String returns a parsed HTML tree representation from the string.
+func String(data string) (Node, error) {
 	return Parse(strings.NewReader(data))
 }
 
