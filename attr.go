@@ -7,10 +7,10 @@ import (
 	"golang.org/x/net/html"
 )
 
-// Attr returns the attribute value with the specified key name.
+// AttrVal returns the attribute value with the specified key name.
 // If the attribute is not specified, the false flag is returned by the second
 // value.
-func Attr(attr []html.Attribute, key string) (val string, ok bool) {
+func AttrVal(attr []html.Attribute, key string) (val string, ok bool) {
 	for _, attr := range attr {
 		if attr.Key == key {
 			return attr.Val, true
@@ -47,7 +47,7 @@ func RemoveAttr(attrs []html.Attribute, key string) []html.Attribute {
 // HasAttrWord returns true if the attribute value with the specified key name
 // and specified word in value is found.
 func HasAttrWord(attrs []html.Attribute, key, word string) bool {
-	val, ok := Attr(attrs, key)
+	val, ok := AttrVal(attrs, key)
 	if !ok {
 		return false
 	}
@@ -63,7 +63,7 @@ func HasAttrWord(attrs []html.Attribute, key, word string) bool {
 
 // AddAttrWord add new word to attribute value.
 func AddAttrWord(attrs []html.Attribute, key, word string) []html.Attribute {
-	val, ok := Attr(attrs, key)
+	val, ok := AttrVal(attrs, key)
 	if !ok || val == "" {
 		return SetAttr(attrs, key, word)
 	}

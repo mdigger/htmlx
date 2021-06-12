@@ -26,12 +26,17 @@ func TagName(name string) Matcher {
 	}
 }
 
+// HasAttrVal is used to find an element with a specified attribute value.
+func HasAttrVal(name, value string) Matcher {
+	return func(n *html.Node) bool {
+		val, ok := AttrVal(n.Attr, name)
+		return ok && val == value
+	}
+}
+
 // ID is used to find an element with a specified unique identifier.
 func ID(id string) Matcher {
-	return func(n *html.Node) bool {
-		val, ok := Attr(n.Attr, AttrID)
-		return ok && val == id
-	}
+	return HasAttrVal(AttrID, id)
 }
 
 // Class is used to select elements with a specified style class.

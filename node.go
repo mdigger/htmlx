@@ -194,7 +194,7 @@ func (n Node) Attr(name string) (val string, ok bool) {
 		return
 	}
 
-	return Attr(n.Node.Attr, name)
+	return AttrVal(n.Node.Attr, name)
 }
 
 // ID returns the unique identifier of the element.
