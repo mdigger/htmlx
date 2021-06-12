@@ -11,13 +11,16 @@ if err != nil {
     panic(err)
 }
 
-// find all link in element with id "test"
-elements := doc.Find(htmlx.ID("test")).FindAll(htmlx.TagName("a"))
-
-// print all href attribute of fined links
-for _, e := range elements {
+ul := doc.Find(htmlx.ID("test"))
+for _, e := range ul.FindAll(htmlx.TagName("a")) {
     if href, ok := e.Attr("href"); ok {
         fmt.Println(href)
     }
 }
+
+err = ul.SetHTML(`<li>no links</li>`)
+if err != nil {
+    panic(err)
+}
+fmt.Println("html:", ul)
 ```

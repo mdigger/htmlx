@@ -18,14 +18,22 @@ func Example() {
 		panic(err)
 	}
 
-	elements := doc.Find(htmlx.ID("test")).FindAll(htmlx.TagName("a"))
-	for _, e := range elements {
+	ul := doc.Find(htmlx.ID("test"))
+	for _, e := range ul.FindAll(htmlx.TagName("a")) {
 		if href, ok := e.Attr("href"); ok {
 			fmt.Println(href)
 		}
 	}
+
+	err = ul.SetHTML(`<li>no links</li>`)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(ul)
 	// Output:
 	// test1.html
 	// test2.html
 	// test3.html
+	// <ul id="test"><li>no links</li></ul>
 }
