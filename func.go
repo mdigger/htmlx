@@ -137,10 +137,8 @@ func FindAll(n *html.Node, m Matcher) (result []*html.Node) {
 	return
 }
 
-// FindSibling finds the first coincidence on the element that follows the
-// specified one. When searching does not use recursion and is not compared with
-// the current element.
-func FindSibling(n *html.Node, m Matcher) *html.Node {
+// FindNext finds the first siblins element.
+func FindNext(n *html.Node, m Matcher) *html.Node {
 	if n == nil || m == nil {
 		return nil
 	}
@@ -154,10 +152,8 @@ func FindSibling(n *html.Node, m Matcher) *html.Node {
 	return nil
 }
 
-// FindPrevSibling finds the previous siblin element that follows the
-// specified one. When searching does not use recursion and is not compared with
-// the current element.
-func FindPrevSibling(n *html.Node, m Matcher) *html.Node {
+// FindPrev finds the previous siblin element.
+func FindPrev(n *html.Node, m Matcher) *html.Node {
 	if n == nil || m == nil {
 		return nil
 	}

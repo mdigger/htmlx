@@ -133,18 +133,14 @@ func (n Node) FindAll(m Matcher) []Node {
 	return result
 }
 
-// FindSibling finds the first coincidence on the element that follows the
-// specified one. When searching does not use recursion and is not compared with
-// the current element.
-func (n Node) FindSibling(m Matcher) Node {
-	return New(FindSibling(n.Node, m))
+// FindNext finds the first siblin element.
+func (n Node) FindNext(m Matcher) Node {
+	return New(FindNext(n.Node, m))
 }
 
-// FindPrevSibling finds the previous siblin element that follows the
-// specified one. When searching does not use recursion and is not compared with
-// the current element.
-func (n Node) FindPrevSibling(m Matcher) Node {
-	return New(FindPrevSibling(n.Node, m))
+// FindPrev finds the previous siblin element.
+func (n Node) FindPrev(m Matcher) Node {
+	return New(FindPrev(n.Node, m))
 }
 
 // HTML returns a string with HTML representation.
