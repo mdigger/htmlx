@@ -6,7 +6,7 @@ htmlx is a library which provides a set of extensions on go's `golang.org/x/net/
 
 ```golang
 // parse html file
-doc, err := htmlx.Open("test.html")
+doc, err := htmlx.Load("test.html")
 if err != nil {
     panic(err)
 }
