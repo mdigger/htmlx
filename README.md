@@ -11,16 +11,16 @@ if err != nil {
     panic(err)
 }
 
-ul := doc.Find(htmlx.ID("test"))
-for _, e := range ul.FindAll(htmlx.TagName("a")) {
-    if href, ok := e.Attr("href"); ok {
+div := doc.Find(htmlx.ID("test"))
+for _, a := range div.FindAll(htmlx.TagName("a")) {
+    if href, ok := a.Attr("href"); ok {
         fmt.Println(href)
     }
 }
 
-err = ul.SetHTML(`<li>no links</li>`)
+err = div.SetHTML(`<em>no links</em>`)
 if err != nil {
     panic(err)
 }
-fmt.Println("html:", ul)
+fmt.Println("html:", div)
 ```
