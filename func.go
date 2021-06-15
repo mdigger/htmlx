@@ -40,13 +40,24 @@ func RemoveChilds(n *html.Node) {
 }
 
 // HTML returns a string with HTML representation.
-func HTML(n *html.Node) (string, error) {
+func HTML(n *html.Node, self bool) (string, error) {
 	if n == nil {
 		return "", nil
 	}
 
-	var b bytes.Buffer
-	err := html.Render(&b, n)
+	var (
+		b   bytes.Buffer
+		err error
+	)
+	if self {
+		err = html.Render(&b, n)
+	} else {
+		for c := n.FirstChild; c != nil; c = c.NextSibling {
+			if err = html.Render(&b, c); err != nil {
+				break
+			}
+		}
+	}
 	if err != nil {
 		return "", err
 	}

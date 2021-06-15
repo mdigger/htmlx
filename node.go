@@ -124,6 +124,16 @@ func (n Node) Find(m Matcher) Node {
 	return New(Find(n.Node, m))
 }
 
+// FindNext finds the first siblin element.
+func (n Node) FindNext(m Matcher) Node {
+	return New(FindNext(n.Node, m))
+}
+
+// FindPrev finds the previous siblin element.
+func (n Node) FindPrev(m Matcher) Node {
+	return New(FindPrev(n.Node, m))
+}
+
 // FindAll returns all the elements suitable for the specified conditions.
 func (n Node) FindAll(m Matcher) []Node {
 	nodes := FindAll(n.Node, m)
@@ -139,31 +149,26 @@ func (n Node) FindAll(m Matcher) []Node {
 	return result
 }
 
-// FindNext finds the first siblin element.
-func (n Node) FindNext(m Matcher) Node {
-	return New(FindNext(n.Node, m))
+// HTML returns a string with inner HTML representation.
+func (n Node) InnerHTML() (string, error) {
+	return HTML(n.Node, false)
 }
 
-// FindPrev finds the previous siblin element.
-func (n Node) FindPrev(m Matcher) Node {
-	return New(FindPrev(n.Node, m))
-}
-
-// HTML returns a string with HTML representation.
-func (n Node) HTML() (string, error) {
-	return HTML(n.Node)
+// OuterHTML returns a string with HTML representation< include self tag.
+func (n Node) OuterHTML() (string, error) {
+	return HTML(n.Node, true)
 }
 
 // String returns a string with HTML representation.
 // Possible error is ignored.
 func (n Node) String() string {
-	str, _ := n.HTML()
+	str, _ := n.OuterHTML()
 	return str
 }
 
-// SetHTML parses an HTML fragment in the context of the current element and
+// SetInnerHTML parses an HTML fragment in the context of the current element and
 // replaces them the child elements.
-func (n *Node) SetHTML(data string) error {
+func (n *Node) SetInnerHTML(data string) error {
 	return SetHTML(n.Node, data)
 }
 

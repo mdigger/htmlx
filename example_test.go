@@ -25,7 +25,7 @@ func Example() {
 		}
 	}
 
-	err = ul.SetHTML(`<li>no links</li>`)
+	err = ul.SetInnerHTML(`<li>no links</li>`)
 	if err != nil {
 		panic(err)
 	}
