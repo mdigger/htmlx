@@ -10,8 +10,8 @@ import (
 // AttrVal returns the attribute value with the specified key name.
 // If the attribute is not specified, the false flag is returned by the second
 // value.
-func AttrVal(attr []html.Attribute, key string) (val string, ok bool) {
-	for _, attr := range attr {
+func AttrVal(attrs []html.Attribute, key string) (val string, ok bool) {
+	for _, attr := range attrs {
 		if attr.Key == key {
 			return attr.Val, true
 		}
