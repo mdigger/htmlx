@@ -65,17 +65,17 @@ func (n Node) IsEmpty() bool {
 }
 
 // Rename renames HTML element.
-func (n *Node) Rename(name string) {
+func (n Node) Rename(name string) {
 	Rename(n.Node, name)
 }
 
 // Remove removes the specified element from the HTML tree.
-func (n *Node) Remove() {
+func (n Node) Remove() {
 	Remove(n.Node)
 }
 
 // RemoveChilds removes all child elements if they are exists.
-func (n *Node) RemoveChilds() {
+func (n Node) RemoveChilds() {
 	RemoveChilds(n.Node)
 }
 
@@ -179,7 +179,7 @@ func (n Node) Text() string {
 
 // SetText replaces the text of the element to the new and removes possible
 // child items.
-func (n *Node) SetText(text string) error {
+func (n Node) SetText(text string) error {
 	return SetText(n.Node, text)
 }
 
@@ -211,7 +211,7 @@ func (n Node) ID() string {
 }
 
 // SetAttr set the new attribute value with the specified name.
-func (n *Node) SetAttr(name, value string) {
+func (n Node) SetAttr(name, value string) {
 	if n.IsEmpty() || n.Type != html.ElementNode {
 		return
 	}
@@ -220,7 +220,7 @@ func (n *Node) SetAttr(name, value string) {
 }
 
 // RemoveAttr removes the attribute value with the specified name.
-func (n *Node) RemoveAttr(name, value string) {
+func (n Node) RemoveAttr(name, value string) {
 	if n.IsEmpty() || n.Type != html.ElementNode {
 		return
 	}
@@ -238,7 +238,7 @@ func (n Node) HasClass(name string) (ok bool) {
 }
 
 // AddClass adds a new style name to the element attribute list.
-func (n *Node) AddClass(name string) {
+func (n Node) AddClass(name string) {
 	if n.IsEmpty() || n.Type != html.ElementNode {
 		return
 	}
