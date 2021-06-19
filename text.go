@@ -46,10 +46,11 @@ func WriteText(w io.StringWriter, n *html.Node, ignore map[atom.Atom]bool) error
 // TextIgnoreAtom specifies the list of items whose contents are ignored when
 // working with text nodes.
 var TextIgnoreAtom = map[atom.Atom]bool{
+	// ignore text inside
 	atom.Head:   true,
 	atom.Script: true,
 	atom.Style:  true,
-
+	// self closed (optimization)
 	atom.Area:   true,
 	atom.Base:   true,
 	atom.Br:     true,
