@@ -168,7 +168,7 @@ func (n Node) String() string {
 
 // SetInnerHTML parses an HTML fragment in the context of the current element and
 // replaces them the child elements.
-func (n *Node) SetInnerHTML(data string) error {
+func (n Node) SetInnerHTML(data string) error {
 	return SetHTML(n.Node, data)
 }
 
