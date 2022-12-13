@@ -10,7 +10,7 @@ import (
 // WriteText walk all the invested text nodes and records the text from them
 // to the specified StringWriter. Ignore comments.
 //
-// BUG: <noscript> parsed as text
+// BUG: <noscript> parsed as text.
 func WriteText(w io.StringWriter, n *html.Node, ignore map[atom.Atom]bool) error {
 	if n == nil {
 		return nil

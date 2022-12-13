@@ -148,7 +148,7 @@ func FindAll(n *html.Node, m Matcher) (result []*html.Node) {
 	return
 }
 
-// FindNext finds the first siblins element.
+// FindNext finds the first siblings element.
 func FindNext(n *html.Node, m Matcher) *html.Node {
 	if n == nil || m == nil {
 		return nil

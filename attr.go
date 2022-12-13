@@ -29,8 +29,7 @@ func SetAttr(attrs []html.Attribute, key, val string) []html.Attribute {
 		}
 	}
 
-	attr := html.Attribute{Key: key, Val: val}
-	return append(attrs, attr)
+	return append(attrs, html.Attribute{Key: key, Val: val})
 }
 
 // RemoveAttr removes the attribute with the specified key name.
